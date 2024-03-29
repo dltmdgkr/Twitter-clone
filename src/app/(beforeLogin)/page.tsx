@@ -1,13 +1,13 @@
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import Image from "next/image";
-import zLogo from "../../public/zlogo.png";
+import zLogo from "../../../public/zlogo.png";
 import Link from "next/link";
 
 export default function Main() {
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        <Image src={zLogo} alt="logo" />
+        <Image src={zLogo} alt="logo" priority />
       </div>
       <div className={styles.right}>
         <h1>지금 일어나고 있는 일</h1>
