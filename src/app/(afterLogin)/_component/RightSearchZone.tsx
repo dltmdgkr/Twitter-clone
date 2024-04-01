@@ -40,5 +40,9 @@ export default function RightSearchZone() {
     );
   }
 
-  return <SearchForm />;
+  return (
+    <div style={{ marginBottom: 60, width: "inherit" }}>
+      <SearchForm />
+    </div>
+  );
 }
