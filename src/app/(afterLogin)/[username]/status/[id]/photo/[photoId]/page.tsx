@@ -5,6 +5,5 @@ export default function Page({
 }: {
   params: { username: string; id: string; photoId: string };
 }) {
-  console.log(params);
   return <Home />;
 }
