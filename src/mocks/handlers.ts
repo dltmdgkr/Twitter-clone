@@ -1,4 +1,10 @@
+import { faker } from "@faker-js/faker";
 import { HttpResponse, http } from "msw";
+
+const User = [
+  { id: "elonmusk", nickname: "Elon Musk", image: "/noneProfile.jpg" },
+  { id: "elonmusk", nickname: "Elon Musk", image: "/noneProfile.jpg" },
+];
 
 export const handlers = [
   http.post("/api/login", () => {
@@ -35,5 +41,33 @@ export const handlers = [
         "Set-Cookie": "connect.sid=msw-cookie;HttpOnly;Path=/;Max-Age=0",
       },
     });
+  }),
+  http.get("/api/postRecommends", async ({ request }) => {
+    return HttpResponse.json([
+      {
+        postId: 1,
+        User: User[0],
+        content: `${1} Z.com is so marvelous. I'm gonna buy that.`,
+        Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
+        createdAt: new Date(),
+      },
+      {
+        postId: 2,
+        User: User[0],
+        content: `${2} Z.com is so marvelous. I'm gonna buy that.`,
+        Images: [
+          { imageId: 1, link: faker.image.urlLoremFlickr() },
+          { imageId: 2, link: faker.image.urlLoremFlickr() },
+        ],
+        createdAt: new Date(),
+      },
+      {
+        postId: 3,
+        User: User[0],
+        content: `${3} Z.com is so marvelous. I'm gonna buy that.`,
+        Images: [],
+        createdAt: new Date(),
+      },
+    ]);
   }),
 ];
